@@ -1,8 +1,25 @@
-$(document).ready(function () {
+interface IPokemonListResponse {
+  results: IPokemonListItemResponse[];
+}
+
+interface IPokemonListItemResponse {
+  name: string;
+}
+
+interface IPokemonDetailsResponse {
+  weight: number;
+  abilities: { ability: { name: string } }[],
+  sprites: { front_default: string }
+}
+
+// tip RS: Consider lambda syntax
+$(document).ready(() => {
     (async function () {
-        const pokelist = await $.get("https://pokeapi.co/api/v2/pokemon/");
+        // tip RS: Avoid any and use interface instead
+        const pokelist: IPokemonListResponse = await $.get("https://pokeapi.co/api/v2/pokemon/");
         let html = "";
-        html += `<table class="table">`;
+        // tip RS: Avoid template string if string is constant and single line
+        html += '<table class="table">';
         html += `<thead>`;
         html += `<tr>`;
         html += `<th>Name</th>`;
@@ -51,16 +68,18 @@ $(document).ready(function () {
         $("#pokemons")[0].innerHTML = html;
     })();
 });
-const getData = function (element: HTMLElement) {
-    
+
+// tip RS: Just a normal function
+function getData(element: HTMLElement) {
     const name = $(element)
         .parent()
         .siblings()[0].innerText;
-    const pokemon = $.get(
+    // tip RS: Avoid any again
+    $.get(
         "https://pokeapi.co/api/v2/pokemon/" + name + "/",
-        function (data : any) {
+        function (data : IPokemonDetailsResponse) {
             const weight: Number = data.weight;
-            const abilities: Array<Object> = data.abilities;
+            const abilities = data.abilities;
             $("table#details").children()[0].innerHTML = `
       <thead>
         <tr>
@@ -74,7 +93,7 @@ const getData = function (element: HTMLElement) {
       <td>${name}</td>
       <td><a href="${data.sprites.front_default}"><img src="${data.sprites.front_default}"></a></td> 
       <td>${weight}</td>
-      <td rowspan=${abilities.length}>${abilities.map((ability: any) => ability.ability.name).join("<br/>")}
+      <td rowspan=${abilities.length}>${abilities.map((ability) => ability.ability.name).join("<br/>")}
       
       </td>
 
