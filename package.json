@@ -1,0 +1,34 @@
+{
+  "name": "pokemon-list-example-florian4300",
+  "version": "1.0.0",
+  "description": "In this exercise, you have to implement a website that uses a RESTful Web API in the background. You have to create the website from scratch without any initial templates to build on. Feel free to use prior homeworks or samples from the course material as a starting point.",
+  "main": "index.js",
+  "scripts": {
+    "copy-bootstrap": "cpx ./node_modules/bootstrap/dist/css/bootstrap.css dist/ && cpx ./node_modules/bootstrap/dist/js/bootstrap.js dist/",
+    "copy-jquery": "cpx ./node_modules/jquery/dist/jquery.js dist/",
+    "build": "cpx *.{html,css} dist/ && npm run copy-bootstrap && npm run copy-jquery && npx tsc --outDir ./dist ",
+    "start": "browser-sync start -c bs-config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/htl-perg-2018-19-4ahif/pokemon-list-example-florian4300.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/htl-perg-2018-19-4ahif/pokemon-list-example-florian4300/issues"
+  },
+  "homepage": "https://github.com/htl-perg-2018-19-4ahif/pokemon-list-example-florian4300#readme",
+  "dependencies": {
+    "@types/node": "^10.12.12",
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.3.22",
+    "browser-sync": "^2.26.3",
+    "cpx": "^1.5.0"
+  }
+}
