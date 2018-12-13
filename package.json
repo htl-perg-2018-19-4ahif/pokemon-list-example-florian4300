@@ -20,13 +20,13 @@
   },
   "homepage": "https://github.com/htl-perg-2018-19-4ahif/pokemon-list-example-florian4300#readme",
   "dependencies": {
-    "@types/node": "^10.12.12",
     "bootstrap": "^4.1.3",
-    "jquery": "^3.3.1",
-    "ts-node": "^7.0.1",
-    "typescript": "^3.2.2"
+    "jquery": "^3.3.1"
   },
   "devDependencies": {
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2",
+    "@types/node": "^10.12.12",
     "@types/jquery": "^3.3.22",
     "browser-sync": "^2.26.3",
     "cpx": "^1.5.0"
